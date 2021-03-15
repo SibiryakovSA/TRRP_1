@@ -13,6 +13,12 @@ namespace TRRP_Lab1
     {
         VkApi api = new VkApi(null, new CaptchaResolver());
 
+        string TFA()
+        {
+            Console.WriteLine("Код двухфакторной аутентификации");
+            return Console.ReadLine();
+        }
+
         public FriendsCRUD(string login, string pass)
         {
             api.Authorize(new ApiAuthParams
@@ -20,7 +26,8 @@ namespace TRRP_Lab1
                 ApplicationId = 7788641,
                 Login = login,
                 Password = pass,
-                Settings = Settings.All
+                Settings = Settings.All,
+                TwoFactorAuthorization = TFA
             });
         }
 
